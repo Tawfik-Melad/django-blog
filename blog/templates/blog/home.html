@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<a href="{% url 'post_creat' %}" class="button"><i class="fa fa-plus"></i> Add Post</a>
+{% endif %}
+{% for post in posts %}
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+        <div class="media-body">
+            <div class="article-metadata">
+            <a class="mr-2" href="{% url 'profile' post.author.username %}">{{ post.author }}</a>
+            <small class="text-muted">{{ post.date }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.content }}</p>
+        </div>
+        {% if user.is_authenticated %}
+            <form action="{% url 'like-post' post.id %}"  method="POST">
+                {% csrf_token %}
+                <button type="submit" name="post.id" value="{{post.id}}" id="like-btn">
+                    {% if user in post.likes.all %}
+                        <i style="color: blue;" class="far fa-thumbs-up"></i>
+                    {% else %}
+                        <i class="far fa-thumbs-up"></i>
+                    {% endif %}
+                    <span id="like-count">{{post.total_likes}}</span>
+                </button>
+            </form>
+        {% else %}
+            <form action="{% url 'login'%}">
+                {% csrf_token %}
+                <button type="submit" id="like-btn">
+                    <i class="far fa-thumbs-up"></i>
+                    <span id="like-count">{{post.total_likes}}</span>
+                </button>
+            </form>
+        {% endif %}            
+    </article>
+    {% endfor %}
+{% endblock %}

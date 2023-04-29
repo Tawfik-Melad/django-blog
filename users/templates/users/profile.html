@@ -1,0 +1,57 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+    <div class="media">
+        {% if posts.first.author.profile.image %}
+            <img class="rounded-circle full-account-img" src="{{posts.first.author.profile.image.url}}">
+        {% else %}
+            <img class="rounded-circle account-img" src="../../media/.jpg">
+        {% endif %}
+        <div class="media-body">
+            <h2 class="account-heading">{{posts.first.author}}</h2>
+            <p class="text-secondary">{{posts.first.author.email}}</p>
+            {% if user.username == view.kwargs.username %}
+            <a href="{% url 'profile_update' %}" title="edit your account information"><i class="fa-solid fa-pen-to-square" style="font-size: 30px"></i></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="content-section">
+    {% for post in posts %}
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+        <div class="media-body">
+            <div class="article-metadata">
+            <a class="mr-2" href="#">{{ post.author }}</a>
+            <small class="text-muted">{{ post.date }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.content }}</p>
+        </div>
+        {% if user.is_authenticated %}
+            <form action="{% url 'like-post' post.id %}"  method="POST">
+                {% csrf_token %}
+                <button type="submit" name="post.id" value="{{post.id}}" id="like-btn">
+                    {% if user in post.likes.all %}
+                        <i style="color: blue;" class="far fa-thumbs-up"></i>
+                    {% else %}
+                        <i class="far fa-thumbs-up"></i>
+                    {% endif %}
+                    <span id="like-count">{{post.total_likes}}</span>
+                </button>
+            </form>
+        {% else %}
+            <form action="{% url 'login'%}">
+                {% csrf_token %}
+                <button type="submit" id="like-btn">
+                    <i class="far fa-thumbs-up"></i>
+                    <span id="like-count">{{post.total_likes}}</span>
+                </button>
+            </form>
+        {% endif %}   
+    </article>
+    
+    {% endfor %}
+</div>
+{% endblock content %}

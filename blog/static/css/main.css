@@ -1,0 +1,176 @@
+body {
+    background: #fafafa;
+    color: #333333;
+    margin-top: 5rem;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #444444;
+  }
+  
+  ul {
+    margin: 0;
+  }
+  
+  .bg-steel {
+    background-color: #5f788a;
+  }
+  
+  .site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+  }
+  
+  .site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+  }
+  
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }
+  
+  .content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+
+  }
+
+  .article-title {
+    color: #444444;
+  }
+  
+  a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+  }
+  
+  .article-content {
+    white-space: pre-line;
+  }
+  
+  .article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+  }
+  
+  .article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .account-img {
+    height: 50px;
+    width: 50px;
+    margin-right: 20px;
+    margin-bottom: 8px;
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
+
+  .full-account-img{
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+
+  a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:   #3d5367;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 7px;
+  }
+  
+  a.button i {
+    margin-right: 10px;
+  }
+
+  #like-btn {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  #like-btn i {
+    margin-right: 5px;
+  }
+  
+  #like-btn.liked i {
+    color: #007bff;
+  }
+  
+  #like-count {
+    margin-left: 5px;
+  }
+  
+  .liked-user{
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  .liked-user img{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .liked-user a{
+    text-decoration: none;
+  }
+  .liked-user a :hover{
+    color: #428bca;
+  }
+  .add-section{
+    position: relative;
+    width: 100%;
+    height:300px;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+
+  .add-section img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    object-fit:fill;
+  }
+
+  .add-section p{
+    position: absolute;
+    z-index: 100;
+    color: whitesmoke;
+    background-color: gray;
+    padding: 5px;
+    border-radius: 10px;
+  }
